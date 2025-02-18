@@ -1,0 +1,36 @@
+<app-my-header name="Лабораторна робота №1"></app-my-header>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Завдання 1</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Завдання 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="task">
+    <h2>Завдання 1</h2>
+    <p>Задано три числа. Якщо всі вони кратні 3, то знайти їх суму. В іншому випадку – куб суми, але тільки якщо добуток їхніх цифр парний.</p>
+    
+    <ion-item>
+      <ion-label position="floating">Число 1</ion-label>
+      <ion-input type="number" [(ngModel)]="number1"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Число 2</ion-label>
+      <ion-input type="number" [(ngModel)]="number2"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Число 3</ion-label>
+      <ion-input type="number" [(ngModel)]="number3"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="calculateTask1()">Обчислити</ion-button>
+    <p>Результат: {{ resultTask1 }}</p>
+  </div>
+</ion-content>

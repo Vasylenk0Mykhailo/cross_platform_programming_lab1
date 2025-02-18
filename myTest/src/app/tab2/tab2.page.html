@@ -1,0 +1,32 @@
+<app-my-header name="Лабораторна робота №1"></app-my-header>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Завдання 2</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Завдання 2</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div class="task">
+    <h2>Завдання 2</h2>
+    <p>На заданому проміжку чисел [a, b] підрахуйте добуток чисел, кратних 7 і менших за 30. Потрібно вивести як самі числа, так і результати обчислення, якщо перші цифри чисел парні.</p>
+    
+    <ion-item>
+      <ion-label position="floating">Початкове число (a)</ion-label>
+      <ion-input type="number" [(ngModel)]="startRange"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Кінцеве число (b)</ion-label>
+      <ion-input type="number" [(ngModel)]="endRange"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="calculateTask2()">Обчислити</ion-button>
+    <p>Результат: {{ resultTask2 }}</p>
+  </div>
+</ion-content>
