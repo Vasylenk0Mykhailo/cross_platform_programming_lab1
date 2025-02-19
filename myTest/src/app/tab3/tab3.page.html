@@ -1,9 +1,8 @@
 <app-my-header name="Лабораторна робота №3"></app-my-header>
+
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Лаб 3
-    </ion-title>
+    <ion-title>Лаб 3</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,5 +13,29 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Лабораторна робота №3"></app-explore-container>
+  <div class="task">
+    <h2>Завдання 3</h2>
+    <p>Згенерувати матрицю розміром NxN. Знайти суму елементів головної діагоналі. Саму діагональ позначити жовтим кольором, якщо всі числа на ній непарні.</p>
+
+    <ion-item>
+      <ion-label position="floating">Розмір матриці (N)</ion-label>
+      <ion-input type="number" [(ngModel)]="matrixSize"></ion-input>
+    </ion-item>
+
+    <ion-button expand="full" (click)="generateMatrix()">Згенерувати матрицю</ion-button>
+    
+    <div *ngIf="matrix.length > 0">
+      <h3>Матриця:</h3>
+      <table>
+        <tr *ngFor="let row of matrix; let i = index">
+          <td *ngFor="let cell of row; let j = index" 
+              [class.highlight]="highlightYellow && i === j">
+            {{ cell }}
+          </td>
+        </tr>
+      </table>
+      
+      <h3>Сума головної діагоналі: {{ diagonalSum }}</h3>
+    </div>
+  </div>
 </ion-content>
