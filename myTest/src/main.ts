@@ -5,12 +5,14 @@ import { FormsModule } from '@angular/forms';
 import { importProvidersFrom } from '@angular/core';
 import { routes } from './app/app.routes';
 import { AppComponent } from './app/app.component';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 bootstrapApplication(AppComponent, {
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     provideIonicAngular(),
     provideRouter(routes, withPreloading(PreloadAllModules)),
-    importProvidersFrom(FormsModule) 
+    importProvidersFrom(FormsModule),
+    provideHttpClient(withFetch()) 
   ],
 });
