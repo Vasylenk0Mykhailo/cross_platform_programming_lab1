@@ -1,0 +1,42 @@
+<app-my-header name="Лабораторна робота №3"></app-my-header>
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Лабораторна робота №3</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">abstractClass</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list *ngIf="furnitureList.length > 0; else loading">
+    <ion-item *ngFor="let furniture of furnitureList">
+      <ion-label>
+        <h2>{{ furniture.name }}</h2>
+        <p>Матеріал: {{ furniture.material }}</p>
+        <p>Вага: {{ furniture.weight }} кг</p>
+        <p *ngIf="isTable(furniture)">Ніжок: {{ getTableLegs(furniture) }}</p>
+        <p *ngIf="isChair(furniture)">М'який: {{ getChairPadded(furniture) }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #loading>
+    <p>Завантаження меблів...</p>
+  </ng-template>
+
+  <ion-card *ngIf="furnitureList.length > 0">
+    <ion-card-header>
+      <ion-card-title>Найважчі меблі</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <h2>{{ heaviestFurniture?.name }}</h2>
+      <p>Матеріал: {{ heaviestFurniture?.material }}</p>
+      <p>Вага: {{ heaviestFurniture?.weight }} кг</p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

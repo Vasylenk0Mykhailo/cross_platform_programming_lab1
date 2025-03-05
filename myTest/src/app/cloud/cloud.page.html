@@ -1,4 +1,4 @@
-<app-my-header name="Лабораторна робота №1"></app-my-header>
+<app-my-header name="Лабораторна робота №2"></app-my-header>
 
 <ion-header [translucent]="true">
   <ion-toolbar>
@@ -12,15 +12,16 @@
       <ion-title size="large">Лабораторна №2</ion-title>
     </ion-toolbar>
   </ion-header>
+
   <div *ngFor="let month of months">
     <h2>{{ month }}</h2>
     <ul>
       <li *ngFor="let paper of newspapersByMonth[month]">
-        {{ paper.date }} - {{ paper.name }}
+        {{ paper.name }}
       </li>
     </ul>
   </div>
-  
+
   <div class="chart-container">
     <canvas id="newspaperChart"></canvas>
   </div>

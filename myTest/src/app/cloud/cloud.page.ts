@@ -21,18 +21,21 @@ interface Newspaper {
   imports: [IonContent, IonHeader, IonTitle, IonToolbar, MyHeaderComponent, CommonModule],
 })
 export class CloudPage implements OnInit, AfterViewInit {
-Object: any;
-newspapersByMonth: any;
-months: any;
-  constructor(private http: HttpClient) {}  
+  newspapersByMonth: any = {};
+  months: string[] = [];
+
+  constructor(private http: HttpClient) {}
 
   ngOnInit() {}
 
   ngAfterViewInit() {
     this.getNewspapers().subscribe(newspapers => {
       const groupedData = this.groupByMonth(newspapers);
+      this.newspapersByMonth = groupedData;
+      
+      this.months = Object.keys(groupedData);
 
-      const labels = Object.keys(groupedData);
+      const labels = this.months;
       const data = labels.map(month => groupedData[month].length);
 
       this.createChart('newspaperChart', labels, data, groupedData);
@@ -50,7 +53,7 @@ months: any;
 
   groupByMonth(newspapers: Newspaper[]): { [key: string]: Newspaper[] } {
     return newspapers.reduce((acc, paper) => {
-      const month = paper.date.slice(0, 7); 
+      const month = paper.date.slice(0, 7);  
       if (!acc[month]) acc[month] = [];
       acc[month].push(paper);
       return acc;
