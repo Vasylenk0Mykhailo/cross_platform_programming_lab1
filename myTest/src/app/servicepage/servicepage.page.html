@@ -1,0 +1,63 @@
+<app-my-header [name]="'Лабораторна робота №5'"></app-my-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Арктангенс обчислення</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-button expand="block" (click)="calculateAll()">Перерахувати</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Результати порівняння</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list lines="full">
+        <ion-item *ngFor="let result of comparisonResults">
+          <ion-label class="result-label">
+            <p><strong>x = {{result.x}}</strong></p>
+            <p>Tab: {{result.tabY}}</p>
+            <p>Series: {{result.seriesY}}</p>
+            <p>Recursive: {{result.recursiveY}}</p>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Графік (Табулювання)</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="chart-container">
+        <canvas id="tabChart"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Графік (Ряд)</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="chart-container">
+        <canvas id="seriesChart"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Графік (Рекурсія)</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="chart-container">
+        <canvas id="recursiveChart"></canvas>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
