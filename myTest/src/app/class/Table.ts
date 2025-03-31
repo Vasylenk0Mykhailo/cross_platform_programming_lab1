@@ -8,6 +8,9 @@ export class Table extends Furniture {
     public numberOfLegs: number
   ) {
     super(name, material, weight);
+    if (numberOfLegs <= 3) {
+      throw new Error("Стіл повинен мати хоча б 4 ніжки");
+    }
   }
 
   fold(): void {

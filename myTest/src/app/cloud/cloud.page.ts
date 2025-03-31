@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { map } from 'rxjs/operators';
 import { Chart, registerables } from 'chart.js/auto';
 import { MyHeaderComponent } from "../my-header/my-header.component";  
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 Chart.register(...registerables);
 

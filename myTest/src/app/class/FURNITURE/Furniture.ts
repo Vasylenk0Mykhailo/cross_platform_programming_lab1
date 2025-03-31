@@ -3,7 +3,11 @@ export abstract class Furniture {
       public name: string,
       public material: string,
       public weight: number
-    ) {}
+    ) {
+      if (!name || !material || weight <= 0) {
+        throw new Error("Invalid furniture parameters");
+      }
+    }
   
     abstract displayInfo(): void;
   

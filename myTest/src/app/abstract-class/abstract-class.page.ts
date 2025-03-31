@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Table } from "../class/Table";
 import { Chair } from "../class/Chair";
+import { Wardrobe } from '../class/Wardrobe';
 import { Furniture } from "../class/FURNITURE/Furniture";
 import { MyHeaderComponent } from "../my-header/my-header.component";
 import { NgIf, NgFor } from "@angular/common"; 
@@ -28,12 +29,17 @@ export class AbstractClassPage implements OnInit {
 
     this.http.get<any>(this.jsonBinUrl, { headers }).subscribe((response) => {
       const data = response.record; 
-      this.furnitureList = data.map((item: any) =>
-        item.type === "table"
-          ? new Table(item.name, item.material, item.weight, item.numberOfLegs)
-          : new Chair(item.name, item.material, item.weight, item.isPadded)
-      );
-
+      this.furnitureList = data.map((item: any) => {
+        if (item.type === "table") {
+          return new Table(item.name, item.material, item.weight, item.numberOfLegs);
+        } else if (item.type === "chair") {
+          return new Chair(item.name, item.material, item.weight, item.isPadded, item.hasArmrests);
+        } else if (item.type === "wardrobe") {
+          return new Wardrobe(item.name, item.material, item.weight, item.numberOfDoors);
+        } else {
+          throw new Error(`Unknown furniture type: ${item.type}`);
+        }
+      });
       this.displayAllFurniture();
       this.findHeaviestFurniture();
     });

@@ -5,7 +5,8 @@ export class Chair extends Furniture {
     name: string,
     material: string,
     weight: number,
-    public override isPadded: boolean
+    public override isPadded: boolean,
+    public hasArmrests: boolean
   ) {
     super(name, material, weight);
   }
@@ -15,6 +16,6 @@ export class Chair extends Furniture {
   }
 
   displayInfo(): void {
-    console.log(`Стілець: ${this.name}, Матеріал: ${this.material}, Вага: ${this.weight} кг, М'який: ${this.isPadded ? 'Так' : 'Ні'}`);
+    console.log(`Стілець: ${this.name}, Матеріал: ${this.material}, Вага: ${this.weight} кг, М'який: ${this.isPadded ? 'Так' : 'Ні'}, Має підлокітники: ${this.hasArmrests}`);
   }
 }
